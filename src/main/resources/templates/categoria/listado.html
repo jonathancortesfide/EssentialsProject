@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="~{layout/plantilla :: head}">
+        <title>Farmacia</title>
+    </head>
+    <body>
+        <header th:replace="~{layout/plantilla :: header}"/>
+
+        <section th:replace="~{categoria/fragmentos :: botonesAgregar}"/>
+        <section th:replace="~{categoria/fragmentos :: agregarCategoria}"/> 
+        <section th:replace="~{categoria/fragmentos :: listadoCategorias}"/>
+
+        <footer th:replace="~{layout/plantilla :: footer}"/>      
+      
+    </body>
+</html>
