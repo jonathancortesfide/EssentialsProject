@@ -4,7 +4,7 @@
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
     <head th:replace="~{layout/plantilla :: head}">
         <title>Farmacia</title>
-        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet"></link>
     </head>
     <body>
         <!-- 1 Sección para crear el boton de agregar... llamará a una ventana modal-->
@@ -17,7 +17,7 @@
                             class="btn btn-primary btn-block" 
                             data-bs-toggle="modal" 
                             data-bs-target="#agregarCategoria">
-                            <i class="fas fa-plus"></i> [[#{categoria.agregar}]]
+                            <i class="fas fa-plus"></i> Add Product
                         </button>
                     </div>
                 </div>
@@ -34,22 +34,22 @@
                 <div class="modal-dialog modal-md">
                     <div class="modal-content">
                         <div class="modal-header bg-info text-white">
-                            <h5 class="modal-title">[[#{categoria.agregar}]]</h5>
+                            <h5 class="modal-title">[[#{product.agregar}]]</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div> 
-                        <form th:action="@{/categoria/guardar}" th:object="${categoria}"
+                        <form th:action="@{/product/guardar}" th:object="${product}"
                               method="POST" class="was-validated" enctype="multipart/form-data">
                             <div class="modal-body">
                                 <div class="mb-3">
-                                    <label for="descripcion">[[#{categoria.descripcion}]]</label>
+                                    <label for="descripcion">[[#{product.descripcion}]]</label>
                                     <input type="text" class="form-control" name="descripcion" required="true"/>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="activo">[[#{categoria.activo}]]</label>
+                                    <label for="activo">[[#{product.activo}]]</label>
                                     <input class="form-check-input" type="checkbox" name="activo" id="activo"/>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="imagen">[[#{categoria.rutaImagen}]]</label>
+                                    <label for="imagen">[[#{product.rutaImagen}]]</label>
                                     <input class="form-control" type="file" name="imagenFile" onchange="readURL(this);"/>
                                     <img id="blah" src="#" alt="your image" height="200"/>
                                 </div>
@@ -63,30 +63,30 @@
             </div>
         </section>
 
-        <section th:fragment="listadoCategorias" id="categorias">
+        <section th:fragment="listadoCategorias" id="products">
             <div class="container my-4">
                 <div class="row">
                     <!-- Verifica que la lista de productos no esté vacía -->
-                    <div th:if="${categorias != null and !categorias.empty}">
+                    <div th:if="${products != null and !products.empty}">
                         <!-- Tarjeta de producto generada en loop -->
-                        <div class="col-md-4 col-sm-6 mb-4" th:each="categoria : ${categorias}">
+                        <div class="col-md-4 col-sm-6 mb-4" th:each="product : ${products}">
                             <div class="card">
                                 <!-- Cargar imagen del producto -->
                                 <div class="card-body">
                                     <!-- Mostrar nombre del producto -->
-                                    <h5 class="card-title" th:text="${categoria.id}">ID</h5>
+                                    <h5 class="card-title" th:text="${product.name}">Name</h5>
                                     <!-- Mostrar descripción del producto -->
-                                    <p class="card-text" th:text="${categoria.nombre}">Nombre</p>
+                                    <p class="card-text" th:text="${product.description}">Description</p>
                                     <!-- Mostrar precio del producto -->
-                                    <p class="card-text"><strong th:text="'Precio: $' + ${categoria.id}">Precio: $XX.XX</strong></p>
-                                    <a href="#" class="btn btn-primary">Ver detalles</a>
+                                    <p class="card-text"><strong th:text="'Price: $' + ${product.price}">Price: $XX.XX</strong></p>
+                                    <a href="#" class="btn btn-primary">Details</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <!-- Mensaje si no hay productos disponibles -->
-                    <div th:if="${productos == null or productos.empty}">
-                        <p>No hay productos disponibles.</p>
+                    <div th:if="${products == null or products.empty}">
+                        <p>No products available.</p>
                     </div>
                 </div>
             </div>
@@ -153,7 +153,7 @@
                           enctype="multipart/form-data">
                         <input type="hidden" name="idCategoria" th:field="*{idCategoria}"/>
                         <input type="hidden" name="rutaImagen" th:field="*{rutaImagen}"/>
-                        <section th:replace="~{categoria/fragmentos :: botonesEditar}"/>
+                        <section th:replace="~{product/fragmentos :: botonesEditar}"/>
                         <div id=details>
                             <div class="container">
                                 <div class="row">
@@ -198,12 +198,12 @@
             <div class="container py-4 mb-4 bg-light">
                 <div class="row">
                     <div class="col-md-4 d-grid">
-                        <a th:href="@{/categoria/listado}" class="btn btn-primary">
+                        <a th:href="@{/product/listado}" class="btn btn-primary">
                             <i class="fas fa-arrow-left"></i> [[#{accion.regresar}]]
                         </a>
                     </div>
                     <div class="col-md-4 d-grid">                                
-                        <a th:href="@{/categoria/eliminar/}+${categoria.idCategoria}"
+                        <a th:href="@{/product/eliminar/}+${product.id}"
                            class="btn btn-danger">
                             <i class="fas fa-trash"></i> [[#{accion.eliminar}]]
                         </a>
