@@ -1,13 +1,98 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-      xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
     <head th:replace="~{layout/plantilla :: head}">
-        <title>Farmacia</title>        
+        <title>Farmacia</title>
+        <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>
     </head>
     <body>
+        <!-- Header -->
         <header th:replace="~{layout/plantilla :: header}"/>
+
+        <!-- Modal Trigger Button -->
+        <div class="d-flex justify-content-center my-3">
+            <button type="button" class="btn btn-lg" data-bs-toggle="modal" data-bs-target="#loginModal" style="background-color: #007bff; border-color: #007bff; color: white;">
+                Iniciar Sesión
+            </button>
+        </div>
         
 
-       <footer th:replace="~{layout/plantilla :: footer}"/>          
+        <!-- Modal Structure (in index.html) -->
+        <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="loginModalLabel">Login</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form onsubmit="event.preventDefault()">
+                            <p class="text-muted text-center">Please enter your login and password!</p>
+                            <div class="mb-3">
+                                <input type="text" class="form-control" placeholder="Username" required>
+                            </div>
+                            <div class="mb-3">
+                                <input type="password" class="form-control" placeholder="Password" required>
+                            </div>
+                            <div class="text-center mb-3">
+                                <a class="forgot text-muted" href="#">Forgot password?</a>
+                            </div>
+                            <div class="d-grid mb-3">
+                                <button type="submit" class="btn btn-primary">Login</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--Crear Ususario-->
+        <div class="d-flex justify-content-center my-3">
+            <button type="button" class="btn btn-lg" data-bs-toggle="modal" data-bs-target="#singUpModal" style="background-color: #007bff; border-color: #007bff; color: white;">
+                Crear usuario
+            </button>
+        </div>
+
+        <!-- Modal Structure (in index.html) -->
+        <div class="modal fade" id="singUpModal" tabindex="-1" aria-labelledby="singUpModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="singUpModalLabel">Login</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form onsubmit="event.preventDefault()">
+                            <p class="text-muted text-center">Pleae fulfill the empy spaces to create your usser!</p>
+                            <div class="mb-3">
+                                <input type="text" class="form-control" placeholder="Email" required>
+                            </div>
+                            <div class="mb-3">
+                                <input type="text" class="form-control" placeholder="Username" required>
+                            </div>
+                            <div class="mb-3">
+                                <input type="password" class="form-control" placeholder="Password" required>
+                            </div>
+                            <div class="mb-3">
+                                <input type="password" class="form-control" placeholder="Password confirmation" required>
+                            </div>
+                            <div class="text-center mb-3">
+                                <a class="forgot text-muted" href="#">Why be part of us?</a>
+                            </div>
+                            <div class="d-grid mb-3">
+                                <button type="submit" class="btn btn-primary">Create usser</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+
+        <!-- Footer -->
+        <footer th:replace="~{layout/plantilla :: footer}"/>
+
+        <!-- Bootstrap JS (after content) -->
+        <script th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
     </body>
 </html>
+
