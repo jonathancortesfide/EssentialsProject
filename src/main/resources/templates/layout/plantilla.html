@@ -1,46 +1,98 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
-    <head th:fragment="head">
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+    <head th:replace="~{layout/plantilla :: head}">
         <title>Farmacia</title>
-        <meta charset="UTF-8"/>
         <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>
-        <link th:href="@{/webjars/font-awesome/css/all.css}" rel="stylesheet"/>
-        <script th:src="@{/js/rutinas.js}"></script>
-        <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
-        <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
-        <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>        
     </head>
     <body>
-        
-        
-        <div class="container">
-            <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
-              <a th:href="@{/}" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
-                <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
-                <span class="fs-4">Essentials</span>
-              </a>
+        <!-- Header -->
+        <header th:replace="~{layout/plantilla :: header}"/>
 
-              <ul class="nav nav-pills">
-                <li class="nav-item"><a th:href="@{/product/listado}" class="nav-link">[[#{plantilla.categorias}]]</a></li>
-                <li class="nav-item"><a th:href="@{/medicamento/listado}" class="nav-link">[[#{plantilla.productos}]]</a></li>
-                <li class="nav-item"><a th:href="@{/usuario/listado}" class="nav-link">[[#{plantilla.usuarios}]]</a></li>
-              </ul>
-            </header>
+        <!-- Modal Trigger Button -->
+        <div class="d-flex justify-content-center my-3">
+            <button type="button" c" data-bslass="btn btn-lg-toggle="modal" data-bs-target="#loginModal" style="background-color: #007bff; border-color: #007bff; color: white;">
+                Iniciar Sesión
+            </button>
+        </div>
+        
+
+        <!-- Modal Structure (in index.html) -->
+        <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="loginModalLabel">Login</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form onsubmit="event.preventDefault()">
+                            <p class="text-muted text-center">Please enter your login and password!</p>
+                            <div class="mb-3">
+                                <input type="text" class="form-control" placeholder="Username" required>
+                            </div>
+                            <div class="mb-3">
+                                <input type="password" class="form-control" placeholder="Password" required>
+                            </div>
+                            <div class="text-center mb-3">
+                                <a class="forgot text-muted" href="#">Forgot password?</a>
+                            </div>
+                            <div class="d-grid mb-3">
+                                <button type="submit" class="btn btn-primary">Login</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <div class="container">
-            <footer class="py-3 my-4">
-              <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Home</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Features</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Pricing</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">FAQs</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">About</a></li>
-              </ul>
-              <p class="text-center text-body-secondary">&copy; 2024 Company, Inc</p>
-            </footer>
+        <!--Crear Ususario-->
+        <div class="d-flex justify-content-center my-3">
+            <button type="button" class="btn btn-lg" data-bs-toggle="modal" data-bs-target="#singUpModal" style="background-color: #007bff; border-color: #007bff; color: white;">
+                Crear usuario
+            </button>
         </div>
 
+        <!-- Modal Structure (in index.html) -->
+        <div class="modal fade" id="singUpModal" tabindex="-1" aria-labelledby="singUpModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="singUpModalLabel">Login</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form onsubmit="event.preventDefault()">
+                            <p class="text-muted text-center">Pleae fulfill the empy spaces to create your usser!</p>
+                            <div class="mb-3">
+                                <input type="text" class="form-control" placeholder="Email" required>
+                            </div>
+                            <div class="mb-3">
+                                <input type="text" class="form-control" placeholder="Username" required>
+                            </div>
+                            <div class="mb-3">
+                                <input type="password" class="form-control" placeholder="Password" required>
+                            </div>
+                            <div class="mb-3">
+                                <input type="password" class="form-control" placeholder="Password confirmation" required>
+                            </div>
+                            <div class="text-center mb-3">
+                                <a class="forgot text-muted" href="#">Why be part of us?</a>
+                            </div>
+                            <div class="d-grid mb-3">
+                                <button type="submit" class="btn btn-primary">Create usser</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
 
+        <!-- Footer -->
+        <footer th:replace="~{layout/plantilla :: footer}"/>
+
+        <!-- Bootstrap JS (after content) -->
+        <script th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
     </body>
+</html>
+
