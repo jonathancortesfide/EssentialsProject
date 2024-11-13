@@ -34,8 +34,7 @@ public class ProductController {
     }
 
     @PostMapping("/guardar")
-    public String productGuardar(Product product,
-            @RequestParam("imagenFile") MultipartFile imagenFile) {
+    public String productGuardar(Product product) {
         productService.save(product);
         return "redirect:/product/listado";
     }
