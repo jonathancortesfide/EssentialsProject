@@ -8,13 +8,14 @@
     </head>
     <body>
         <!-- 1 Sección para crear el boton de agregar... llamará a una ventana modal-->
+        <!-- Section for creating the add button, which will call a modal window -->
         <section th:fragment="botonesAgregar" class="py-4 mb-4 bg-light">
             <div class="container">
                 <div class="row">
                     <div class="col-md-3">   
                         <button 
                             type="button" 
-                            class="btn btn-primary btn-block" 
+                            class="btn btn-light btn-block text-primary border border-primary" 
                             data-bs-toggle="modal" 
                             data-bs-target="#agregarCategoria">
                             <i class="fas fa-plus"></i> Add Product
@@ -23,6 +24,24 @@
                 </div>
             </div>
         </section>
+
+        <style>
+            /* Example of additional styles for secondary colors */
+            .btn-secondary-blue {
+                background-color: #007bff; /* Bootstrap primary blue */
+                color: white;
+            }
+
+            .btn-secondary-dark {
+                background-color: #343a40; /* Bootstrap dark */
+                color: white;
+            }
+
+            .btn-secondary-light-blue {
+                background-color: #5bc0de; /* Light blue */
+                color: white;
+            }
+        </style>
 
         <!-- 2 Fragmento para agregar categoria, es la ventana modal -->
         <section th:fragment="agregarCategoria">
@@ -51,7 +70,7 @@
                                 <div class="mb-3">
                                     <label for="imagen">[[#{product.rutaImagen}]]</label>
                                     <input class="form-control" type="file" name="imagenFile" onchange="readURL(this);"/>
-                                    <img id="blah" src="#" alt="your image" height="200"/>
+                                    <img id="blah" src="#" alt="your image" height="200" class="mt-2"/>
                                 </div>
                             </div>
                             <div class="modal-footer">
@@ -66,31 +85,32 @@
         <section th:fragment="listadoCategorias" id="products">
             <div class="container my-4">
                 <div class="row">
-                    <!-- Verifica que la lista de productos no esté vacía -->
+                    <!-- Check if the product list is not empty -->
                     <div th:if="${products != null and !products.empty}">
-                        <!-- Tarjeta de producto generada en loop -->
+                        <!-- Product card generated in loop -->
                         <div class="col-md-4 col-sm-6 mb-4" th:each="product : ${products}">
                             <div class="card">
-                                <!-- Cargar imagen del producto -->
                                 <div class="card-body">
-                                    <!-- Mostrar nombre del producto -->
+                                    <!-- Show product name -->
                                     <h5 class="card-title" th:text="${product.name}">Name</h5>
-                                    <!-- Mostrar descripción del producto -->
+                                    <!-- Show product description -->
                                     <p class="card-text" th:text="${product.description}">Description</p>
-                                    <!-- Mostrar precio del producto -->
+                                    <!-- Show product price -->
                                     <p class="card-text"><strong th:text="'Price: $' + ${product.price}">Price: $XX.XX</strong></p>
                                     <a href="#" class="btn btn-primary">Details</a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!-- Mensaje si no hay productos disponibles -->
+                    <!-- Message if no products are available -->
                     <div th:if="${products == null or products.empty}">
                         <p>No products available.</p>
                     </div>
                 </div>
             </div>
         </section>
+
+        <!-- Scripts for Bootstrap and jQuery -->
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.min.js"></script>
@@ -102,24 +122,24 @@
                 <div class="row">
                     <div class="col-md-9">
                         <div class="card">
-                            <div class="card-header">
+                            <div class="card-header bg-info text-white">
                                 <h4>[[#{categoria.listado}]]</h4>
                             </div>
                             <div th:if="${categorias != null and !categorias.empty}">
                                 <table class="table table-striped table-hover">
                                     <thead class="table-dark">
-                                        <tr><th>ID</th>
+                                        <tr>
+                                            <th>ID</th>
                                             <th>Nombre</th>
                                             <th>Descripción</th>
-
-                                            <th></th></tr>
+                                            <th></th>
+                                        </tr>
                                     </thead>
                                     <tbody>
                                         <tr th:each="categoria, contador : ${categorias}">
                                             <td>[[${categoria.id}]]</td>
                                             <td>[[${categoria.nombre}]]</td>
-                                            <td>[[${categoria.descripcion}]]</td>   
-
+                                            <td>[[${categoria.descripcion}]]</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -154,12 +174,12 @@
                         <input type="hidden" name="idCategoria" th:field="*{idCategoria}"/>
                         <input type="hidden" name="rutaImagen" th:field="*{rutaImagen}"/>
                         <section th:replace="~{product/fragmentos :: botonesEditar}"/>
-                        <div id=details>
+                        <div id="details">
                             <div class="container">
                                 <div class="row">
                                     <div class="col">
                                         <div class="card">
-                                            <div class="card-header">
+                                            <div class="card-header bg-info text-white">
                                                 <h4>[[#{accion.actualizar}]]</h4>
                                             </div>
                                             <div class="card-body">
@@ -181,13 +201,14 @@
                                                     <label for="imagen">[[#{categoria.rutaImagen}]]</label>
                                                     <input class="form-control" type="file" name="imagenFile"
                                                            onchange="readURL(this);" />
-                                                    <img id="blah" th:src="@{${categoria.rutaImagen}}" alt="your image" height="200"/>
+                                                    <img id="blah" th:src="@{${categoria.rutaImagen}}" alt="your image" height="200" class="mt-2"/>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                        </div>
                     </form>
                 </div>
             </div>
@@ -203,8 +224,7 @@
                         </a>
                     </div>
                     <div class="col-md-4 d-grid">                                
-                        <a th:href="@{/product/eliminar/}+${product.id}"
-                           class="btn btn-danger">
+                        <a th:href="@{/product/eliminar/}+${product.id}" class="btn btn-danger">
                             <i class="fas fa-trash"></i> [[#{accion.eliminar}]]
                         </a>
                     </div>
