@@ -68,6 +68,7 @@
                 <div class="row">
                     <!-- Verifica que la lista de productos no esté vacía -->
                     <div th:if="${products != null and !products.empty}">
+<<<<<<< Updated upstream
                         <!-- Tarjeta de producto generada en loop -->
                         <div class="col-md-4 col-sm-6 mb-4" th:each="product : ${products}">
                             <div class="card">
@@ -80,6 +81,30 @@
                                     <!-- Mostrar precio del producto -->
                                     <p class="card-text"><strong th:text="'Price: $' + ${product.price}">Price: $XX.XX</strong></p>
                                     <a href="#" class="btn btn-primary">Details</a>
+=======
+                        <!-- Contenedor de productos, con estilo para hacer el layout horizontal -->
+                        <div class="d-flex flex-wrap justify-content-start">
+                            <!-- Tarjeta de producto generada en loop -->
+                            <div class="col-md-4 col-sm-6 mb-4" th:each="product : ${products}">
+                                <div class="card" style="width: 18rem; margin-right: 20px; margin-bottom: 20px;">
+                                    <!-- Cargar imagen del producto -->
+                                    <img th:src="@{${product.imageUrl}}" class="card-img-top" alt="Product Image">
+                                    <div class="card-body">
+                                        <!-- Mostrar nombre del producto -->
+                                        <h5 class="card-title" th:text="${product.name}">Name</h5>
+                                        <!-- Mostrar descripción del producto -->
+                                        <p class="card-text" th:text="${product.description}">Description</p>
+                                        <!-- Mostrar precio del producto -->
+                                        <p class="card-text"><strong th:text="'Price: $' + ${product.price}">Price: $XX.XX</strong></p>
+                                        <a href="#" class="btn btn-primary">Details</a>
+                                        <a th:href="@{/product/eliminar/}+${product.id}" class="btn btn-danger">
+                                            <i class="fas fa-trash"></i> Delete
+                                        </a>
+                                        <a th:href="@{/product/modificar/}+${product.id}" class="btn btn-success">
+                                            <i class="fas fa-pencil"></i> Modify
+                                        </a>
+                                    </div>
+>>>>>>> Stashed changes
                                 </div>
                             </div>
                         </div>
@@ -91,6 +116,7 @@
                 </div>
             </div>
         </section>
+        
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.min.js"></script>
