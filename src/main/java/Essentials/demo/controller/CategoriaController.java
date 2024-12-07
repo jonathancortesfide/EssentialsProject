@@ -2,7 +2,7 @@ package Essentials.demo.controller;
 
 import org.springframework.ui.Model;
 import Essentials.demo.domain.Categoria;
-import Essentials.service.CategoriaService;
+import Essentials.demo.service.CategoriaService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,7 +22,14 @@ public class CategoriaController {
 
     @GetMapping("/listado")
     public String inicio(Model model) {
+        System.out.println("inicio() method called");
         var categorias = categoriaService.getCategorias(false);
+        log.info("Categories fetched: {}", categorias);
+        for (Categoria categoria : categorias) {
+            System.out.println("ID: " + categoria.getId()
+                    + ", Category: " + categoria.getCategory()
+                    + ", Description: " + categoria.getDescription());
+        }
         model.addAttribute("categorias", categorias);
         model.addAttribute("totalCategorias", categorias.size());
         return "/categoria/listado";
@@ -51,4 +58,5 @@ public class CategoriaController {
         model.addAttribute("categoria", categoria);
         return "/categoria/modifica";
     }
+
 }

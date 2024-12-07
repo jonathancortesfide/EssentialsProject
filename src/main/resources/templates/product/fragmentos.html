@@ -41,12 +41,11 @@
                               method="POST" class="was-validated" enctype="multipart/form-data">
                             <div class="modal-body">
                                 <div class="mb-3">
-                                    <label for="categoryId">Category</label>
-                                    <select name="categoria.id" 
+                                    <label for="CategoryId">Category</label>
+                                    <select name="category.id" 
                                             class="form-select" 
                                             aria-label="Default select example">
-                                        <option th:each="c : ${categorias}" th:value="${c.id}" th:text="${c.description}">
-                                        </option>
+                                        <option th:each="c : ${categorias}" th:value="${c.id}" th:text="${c.description}"></option>
                                     </select>
                                 </div>
                                 <div class="mb-3">
@@ -60,6 +59,14 @@
                                 <div class="mb-3">
                                     <label for="price">Price</label>
                                     <input type="text" class="form-control" name="price" required="true"/>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="quantity">Quantity</label>
+                                    <input type="text" class="form-control" name="price" required="true"/>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="active">Active</label>
+                                    <input type="checkbox" class="form-check-input" name="active" required="true">
                                 </div>
                             </div>
                             <div class="modal-footer">
