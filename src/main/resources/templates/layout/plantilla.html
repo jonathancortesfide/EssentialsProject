@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<<<<<<< Updated upstream
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
     <head th:fragment="head">
@@ -28,138 +27,9 @@
                 <li class="nav-item"><a th:href="@{/usuario/listado}" class="nav-link">[[#{plantilla.usuarios}]]</a></li>
               </ul>
             </header>
-=======
-<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <title>Essentials</title>
-    <meta charset="UTF-8" />
-    <link
-      th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"
-      rel="stylesheet"
-    />
-    <link th:href="@{/webjars/font-awesome/css/all.css}" rel="stylesheet" />
-    <script th:src="@{/js/rutinas.js}"></script>
-    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
-    <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
-    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
-  </head>
-  <body class="bg-light">
-    <!-- Header -->
-    <header
-      class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom bg-lightblue"
-    >
-      <a
-        th:href="@{/}"
-        class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none"
-      >
-        <span class="fs-4">Essentials</span>
-      </a>
-      <ul class="nav nav-pills">
-        <li class="nav-item">
-          <a th:href="@{/product/listado}" class="nav-link text-dark"
-            >Products</a
-          >
-        </li>
-        <li class="nav-item">
-          <a th:href="@{/medicamento/listado}" class="nav-link text-dark"
-            >Category</a
-          >
-        </li>
-        <li class="nav-item">
-          <a th:href="@{/usuario/listado}" class="nav-link text-dark">Users</a>
-        </li>
-      </ul>
-    </header>
-
-    <!-- Modales -->
-    <div th:fragment="modales">
-      <!-- Modal Trigger Button (Login) -->
-      <div class="d-flex justify-content-center my-3">
-        <button
-          type="button"
-          class="btn btn-primary btn-lg rounded-pill px-4 py-2 shadow-sm transition-all"
-          data-bs-toggle="modal"
-          data-bs-target="#loginModal"
-        >
-          Sign In
-        </button>
-      </div>
-
-      <!-- Modal Structure (Login Modal) -->
-      <div
-        class="modal fade"
-        id="loginModal"
-        tabindex="-1"
-        aria-labelledby="loginModalLabel"
-        aria-hidden="true"
-      >
-        <div class="modal-dialog">
-          <div class="modal-content bg-white text-dark">
-            <div class="modal-header">
-              <h5 class="modal-title" id="loginModalLabel">Sign In</h5>
-              <button
-                type="button"
-                class="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
-            </div>
-            <div class="modal-body">
-              <form onsubmit="event.preventDefault()">
-                <p class="text-muted text-center">
-                  Please enter your user and password!
-                </p>
-                <div class="mb-3">
-                  <input
-                    type="text"
-                    class="form-control rounded-pill shadow-sm"
-                    placeholder="Username"
-                    required
-                  />
-                </div>
-                <div class="mb-3">
-                  <input
-                    type="password"
-                    class="form-control rounded-pill shadow-sm"
-                    placeholder="Password"
-                    required
-                  />
-                </div>
-                <div class="text-center mb-3">
-                  <a class="forgot text-muted" href="#">Forgot password?</a>
-                </div>
-                <div class="d-grid mb-3">
-                  <button
-                    type="submit"
-                    class="btn btn-primary rounded-pill py-2"
-                  >
-                    Sign In
-                  </button>
-                </div>
-              </form>
-            </div>
-          </div>
->>>>>>> Stashed changes
         </div>
       </div>
 
-<<<<<<< Updated upstream
-        <div class="container">
-            <footer class="py-3 my-4">
-              <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Home</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Features</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Pricing</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">FAQs</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">About</a></li>
-              </ul>
-              <p class="text-center text-body-secondary">&copy; 2024 Company, Inc</p>
-            </footer>
-        </div>
-
-
-    </body>
-=======
       <!-- Modal Trigger Button (Sign Up) -->
       <div class="d-flex justify-content-center my-3">
         <button
@@ -349,4 +219,3 @@
     </style>
   </body>
 </html>
->>>>>>> Stashed changes
