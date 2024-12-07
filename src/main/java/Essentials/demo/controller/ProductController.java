@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-import Essentials.service.ProductService;
+import Essentials.demo.service.ProductService;
 
 @Controller
 @Slf4j
@@ -23,6 +23,10 @@ public class ProductController {
     @GetMapping("/listado")
     public String inicio(Model model) {
         var products = productService.getProducts(false);
+        for (Product prod : products) {
+            System.out.println("ID: " + prod.getId()
+                    + ", Name: " + prod.getName());
+        }
         model.addAttribute("products", products);
         model.addAttribute("totalProducts", products.size());
         return "/product/listado";

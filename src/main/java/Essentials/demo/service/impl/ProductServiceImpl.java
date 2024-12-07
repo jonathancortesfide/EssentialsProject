@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import Essentials.demo.dao.ProductDao;
-import Essentials.service.ProductService;
+import Essentials.demo.service.ProductService;
 
 @Service
 public class ProductServiceImpl implements ProductService {

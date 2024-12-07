@@ -1,4 +1,4 @@
-package Essentials.service;
+package Essentials.demo.service;
 
 import Essentials.demo.domain.Categoria;
 import java.util.List;

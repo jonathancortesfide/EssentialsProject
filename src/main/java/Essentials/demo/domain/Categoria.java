@@ -20,7 +20,7 @@ public class Categoria implements Serializable {
     private String description;
     
     @OneToMany
-    @JoinColumn(name="Id")
+    @JoinColumn(name="CategoryId")
     List<Product> productos;
 
     public Categoria() {

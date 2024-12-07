@@ -2,7 +2,7 @@ package Essentials.demo.service.impl;
 
 import Essentials.demo.dao.CategoriaDao;
 import Essentials.demo.domain.Categoria;
-import Essentials.service.CategoriaService;
+import Essentials.demo.service.CategoriaService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
