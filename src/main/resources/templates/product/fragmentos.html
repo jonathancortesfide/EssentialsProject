@@ -45,7 +45,11 @@
                                     <select name="category.id" 
                                             class="form-select" 
                                             aria-label="Default select example">
-                                        <option th:each="c : ${categorias}" th:value="${c.id}" th:text="${c.description}"></option>
+                                        <option value="1">Sweater</option>
+                                        <option value="2">T-Shirts</option>
+                                        <option value="3">Glasses</option>
+                                        <option value="4">Shorts</option>
+                                        <option value="5">Caps</option>
                                     </select>
                                 </div>
                                 <div class="mb-3">
@@ -62,11 +66,11 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="quantity">Quantity</label>
-                                    <input type="text" class="form-control" name="price" required="true"/>
+                                    <input type="text" class="form-control" name="quantity" required="true"/>
                                 </div>
                                 <div class="mb-3">
                                     <label for="active">Active</label>
-                                    <input type="checkbox" class="form-check-input" name="active" required="true">
+                                    <input type="checkbox" class="form-check-input" name="active" >
                                 </div>
                             </div>
                             <div class="modal-footer">
