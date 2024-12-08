@@ -1,3 +1,5 @@
+-- Author: Elias Viquez
+
 -- DROP DATABASE Essentials;
 drop schema if exists Essentials;
 drop user if exists usuario_prueba;
@@ -141,9 +143,7 @@ SELECT * FROM Role;
 
 SELECT * FROM Product;
 
-
-
-
+-- Sin mas inserts curiosos para evitar perder el curso.
  
  
 
