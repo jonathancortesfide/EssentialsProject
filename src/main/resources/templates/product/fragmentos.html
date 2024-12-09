@@ -85,41 +85,27 @@
         <section th:fragment="listadoProductos" id="products">
             <div class="container my-4">
                 <div class="row">
-                    <!-- Verifica que la lista de productos no esté vacía -->
-                    <div th:if="${products != null and !products.empty}">
-                        <!-- Tarjeta de producto generada en loop -->
-                        <div class="col-md-4 col-sm-6 mb-4" th:each="product : ${products}">
-                            <div class="card">
-                                <!-- Cargar imagen del producto -->
-                                <div class="card-body">
-                                    <!-- Mostrar nombre del producto -->
-                                    <h5 class="card-title" th:text="${product.name}">Name</h5>
-                                    <!-- Mostrar descripción del producto -->
-                                    <p class="card-text" th:text="${product.description}">Description</p>
-                                    <!-- Mostrar precio del producto -->
-                                    <p class="card-text"><strong th:text="'Price: $' + ${product.price}">Price: $XX.XX</strong></p>
-                                    <a href="#" class="btn btn-primary">Details</a>
-                                    <a th:href="@{/product/eliminar/}+${product.id}"
-                                       class="btn btn-danger">
-                                        <i class="fas fa-trash"></i> Delete</a></td>
-                                    <td>
-                                        <a th:href="@{/product/modificar/}+${product.id}"
-                                           class="btn btn-success">
-                                            <i class="fas fa-pencil"></i> Modify</a>
-                                </div>
+                    <!-- Loop dinámico para generar productos -->
+                    <div class="col-lg-4 col-md-6 col-sm-12 mb-4" th:each="product : ${products}">
+                        <div class="card">
+                            <div class="card-body">
+                                <!-- Nombre del producto -->
+                                <h5 class="card-title" th:text="${product.name}">Product Name</h5>
+                                <!-- Descripción -->
+                                <p class="card-text" th:text="${product.description}">Product Description</p>
+                                <!-- Precio -->
+                                <p class="card-text"><strong th:text="'Price: $' + ${product.price}">Price</strong></p>
+                                <!-- Botones -->
+                                <a href="#" class="btn btn-primary">Details</a>
+                                <a th:href="@{/product/eliminar/}+${product.id}" class="btn btn-danger">Delete</a>
+                                <a th:href="@{/product/modificar/}+${product.id}" class="btn btn-success">Modify</a>
                             </div>
                         </div>
                     </div>
-                    <!-- Mensaje si no hay productos disponibles -->
-                    <div th:if="${products == null or products.empty}">
-                        <p>No products available.</p>
-                    </div>
                 </div>
             </div>
+
         </section>
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.min.js"></script>
 
 
         <!-- 4 Fragmento que se utiliza en la página modifca.html -->
