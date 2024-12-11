@@ -127,7 +127,7 @@ public class ItemServiceImpl implements ItemService {
             System.out.println("Producto: " + i.getDescription()
                     + " Cantidad: " + i.getCantidad()
                     + " Total: " + i.getPrice() * i.getCantidad());
-            Venta venta = new Venta(factura.getIdFactura(), i.getId(), i.getPrice(), i.getCantidad());
+            Venta venta = new Venta(factura.getId(), i.getId(), i.getPrice(), i.getCantidad());
             ventaDao.save(venta);
             Product producto = productoDao.getReferenceById(i.getId());
             producto.setQuantity(producto.getQuantity()-i.getCantidad());

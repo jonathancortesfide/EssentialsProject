@@ -8,26 +8,24 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name="factura")
+@Table(name="Invoice")
 public class Factura implements Serializable {    
     private static final long serialVersionUID = 1L;
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id_factura")
-    private Long idFactura;
-    private Long idUsuario;
-    private Date fecha;
+    @Column(name="id")
+    private Long id;
+    private Long customerId;
+    private Date date;
     private double total;
-    private int estado;
     
     
     public Factura() {
     }
 
     public Factura(Long idUSuario) {
-        this.idUsuario = idUSuario;
-        this.fecha = Calendar.getInstance().getTime();
-        this.estado=1;
+        this.customerId = idUSuario;
+        this.date = Calendar.getInstance().getTime();
     }    
 }

@@ -4,24 +4,19 @@
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:sec="http://thymeleaf.org/extras/spring-security">
     <head th:replace="~{layout/plantilla :: head}">
-        <title>TechShop</title>
+        <title>Essentials</title>
     </head>
     <body>
-        <section th:fragment="listadoProductos" id="productos">
+        <section th:fragment="listadoProductos" id="products">
             <div class="container">
                 <div class="row row-cols-2" >
                     <h2 class="inline">[[#{index.nuestrosProductos}]]</h2>
                     <div id="resultsBlock"></div></div>
                 <div class="row row-cols-3" 
-                     th:if="${productos != null and !productos.empty}">
-                    <div class="card" th:each="producto : ${productos}">
+                     th:if="${products != null and !products.empty}">
+                    <div class="card" th:each="product : ${products}">
                         <div class="card-body">
                             <h5 class="card-title">[[${product.name}]]</h5>
-                            <figure>
-                                <img th:src="@{${producto.rutaImagen}}" height="200"/>
-                                <figcaption>[[${product.price}+' ('+${product.quantity}+')']]
-                                </figcaption>
-                            </figure>
                             <form>
                                 <input type="hidden" name="texto" th:value="${product.id}"/>
                                 <input type="hidden" name="texto" th:value="${product.quantity}"/>
@@ -33,7 +28,7 @@
                         </div>
                     </div>
                 </div>
-                <div th:if="${producs == null or productos.empty}">
+                <div th:if="${products == null or products.empty}">
                     [[#{carrito.no_mostrar}]]</div>
             </div>
         </section>
@@ -62,10 +57,10 @@
                                     <thead class="thead-dark">
                                         <tr>
                                             <th>#</th>
-                                            <th>[[#{producto.description}]]</th>
-                                            <th>[[#{producto.price}]]</th>
-                                            <th>[[#{carrito.cantidad}]]</th>
-                                            <th>[[#{carrito.total}]]</th>
+                                            <th>Name</th>
+                                            <th>Price</th>
+                                            <th>Quantity</th>
+                                            <th>Total</th>
                                             <th></th>
                                             <th></th>
                                         </tr>
@@ -75,8 +70,8 @@
                                             <td>[[${contador.count}]]</td>
                                             <td>[[${item.name}]]</td>
                                             <td class="text-end">[[${item.price}]]</td>
-                                            <td class="text-center">[[${item.quantity}]]</td>
-                                            <td class="text-center">[[${item.quantity*item.price}]]</td>
+                                            <td class="text-center">[[${item.cantidad}]]</td>
+                                            <td class="text-center">[[${item.cantidad*item.price}]]</td>
                                             <td>
                                                 <a th:href="@{/carrito/eliminar/}+${item.id}"
                                                    class="btn btn-danger">
