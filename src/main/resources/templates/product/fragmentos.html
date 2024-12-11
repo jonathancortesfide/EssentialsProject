@@ -96,7 +96,7 @@
                                 <!-- Precio -->
                                 <p class="card-text"><strong th:text="'Price: $' + ${product.price}">Price</strong></p>
                                 <!-- Botones -->
-                                <a href="#" class="btn btn-primary">Details</a>
+                                <a href="#" class="btn btn-primary">Add to cart</a>
                                 <a th:href="@{/product/eliminar/}+${product.id}" class="btn btn-danger">Delete</a>
                                 <a th:href="@{/product/modificar/}+${product.id}" class="btn btn-success">Modify</a>
                             </div>
