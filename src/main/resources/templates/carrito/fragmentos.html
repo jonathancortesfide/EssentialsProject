@@ -4,11 +4,19 @@
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:sec="http://thymeleaf.org/extras/spring-security">
     <head th:replace="~{layout/plantilla :: head}">
+<<<<<<< Updated upstream
         <title>TechShop</title>
+=======
+        <title>Essentials</title>
+        <link th:href="@{/css/custom-styles.css}" rel="stylesheet">
+>>>>>>> Stashed changes
     </head>
     <body>
         <section th:fragment="listadoProductos" id="productos">
             <div class="container">
+                <div class="row justify-content-center text-center mb-4">
+                    <h1 class="custom-text">Welcome to Essentials</h1>
+                </div>
                 <div class="row row-cols-2" >
                     <h2 class="inline">[[#{index.nuestrosProductos}]]</h2>
                     <div id="resultsBlock"></div></div>
