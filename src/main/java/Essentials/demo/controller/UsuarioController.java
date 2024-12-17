@@ -34,10 +34,10 @@ public class UsuarioController {
     @PostMapping("/guardar")
     public String usuarioGuardar(Usuario usuario,
             @RequestParam("imagenFile") MultipartFile imagenFile) {
-        if (!imagenFile.isEmpty()) {
-            usuarioService.save(usuario,false);
+        if (!imagenFile.isEmpty() || imagenFile.isEmpty()) {
+            usuarioService.save(usuario, false);
         }
-        usuarioService.save(usuario,true);
+        usuarioService.save(usuario, true);
         return "redirect:/usuario/listado";
     }
 

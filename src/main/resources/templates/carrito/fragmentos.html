@@ -17,7 +17,7 @@
                 <div id="resultsBlock"></div>
             </div>
             <div class="row row-cols-3" th:if="${products != null and !products.empty}">
-                <div class="card" th:each="product : ${products}" >
+                <div class="card" th:each="product : ${products}" th:if="${product.quantity > 0}">
                     <div class="card-body">
                         <h5 class="card-title">[[${product.name}]]</h5>
                         <form>
