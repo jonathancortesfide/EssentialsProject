@@ -3,7 +3,7 @@
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
     <head th:replace="~{layout/plantilla :: head}">
-        <title>Essentials</title>
+        <title>Farmacia</title>
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet"></link>
     </head>
     <body>
@@ -96,7 +96,7 @@
                                 <!-- Precio -->
                                 <p class="card-text"><strong th:text="'Price: $' + ${product.price}">Price</strong></p>
                                 <!-- Botones -->
-                                <a href="#" class="btn btn-primary">Add to cart</a>
+                                <a href="#" class="btn btn-primary">Details</a>
                                 <a th:href="@{/product/eliminar/}+${product.id}" class="btn btn-danger">Delete</a>
                                 <a th:href="@{/product/modificar/}+${product.id}" class="btn btn-success">Modify</a>
                             </div>
