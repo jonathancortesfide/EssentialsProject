@@ -1,0 +1,13 @@
+@font-face {
+    font-family: 'CustomFont';
+    src: url('/fonts/Darkcastle_PERSONAL_USE_ONLY.otf') format('opentype');
+}
+
+.custom-text {
+    font-family: 'CustomFont', sans-serif; /* Aplica la fuente personalizada */
+    font-size: 3rem; /* Tamaño de letra */
+    color: #0056b3; /* Color azul */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Efecto de sombra */
+    text-align: center; /* Centrado */
+    margin-bottom: 1.5rem; /* Espaciado inferior */
+}
