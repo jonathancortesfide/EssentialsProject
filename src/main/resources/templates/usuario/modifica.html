@@ -2,14 +2,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
     <head th:replace="~{layout/plantilla :: head}">
-        <title>TechShop</title>
+        <title>Essentials</title>
     </head>
     <body>
-        <header th:replace="~{layout/plantilla :: header}"></header>
-
-        <section th:replace="~{categoria/fragmentos :: editarCategoria}"></section>
-        
-        <footer th:replace="~{layout/plantilla :: footer}"></footer>
-
+        <header th:replace="~{layout/plantilla :: header}"/>
+        <section th:replace="~{usuario/fragmentos :: editarUsuario}"/>
+        <footer th:replace="~{layout/plantilla :: footer}"/>
     </body>
 </html>
