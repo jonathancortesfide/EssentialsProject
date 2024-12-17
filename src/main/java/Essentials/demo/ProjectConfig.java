@@ -88,9 +88,17 @@ public class ProjectConfig implements WebMvcConfigurer {
                         "/product/modificar/**", "/product/eliminar/**",
                         "/categoria/nuevo", "/categoria/guardar",
                         "/categoria/modificar/**", "/categoria/eliminar/**",
+<<<<<<< Updated upstream
                         "/usuario/nuevo", "/usuario/guardar/**",
                         "/usuario/guardar/", "/usuario/modifica/**", 
                         "/usuario/elimina/**", "/reportes/**"
+=======
+                        "/usuario/nuevo/**", "/usuario/guardar/**",
+                        "/usuario/modificar/**", "/usuario/eliminar/**",
+                        "/usuario/listado/**", "/usuario/modifica/**", 
+                        "/usuario/**",
+                        "/reportes/**", "/carrito/agregar/**"
+>>>>>>> Stashed changes
                 ).hasRole("ADMIN")
                 .requestMatchers(
                         "/product/listado",
