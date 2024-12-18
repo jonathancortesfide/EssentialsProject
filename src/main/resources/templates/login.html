@@ -5,6 +5,67 @@
         <title>Essentials</title>
         <meta charset="UTF-8"/>
     </head>
+
+     <!-- 2 Fragmento para agregar usuario, es la ventana modal -->
+     <section th:fragment="agregarUsuario">
+        <div id="agregarUsuario" 
+             class="modal fade" 
+             tabindex="-1" 
+             aria-labelledby="exampleModalLabel" 
+             aria-hidden="true">
+            <div class="modal-dialog modal-md">
+                <div class="modal-content">
+                    <div class="modal-header bg-info text-white">
+                        <h5 class="modal-title">[[#{usuario.agregar}]]</h5>
+                        <button type="button" 
+                                class="btn-close" 
+                                data-bs-dismiss="modal" 
+                                aria-label="Close"></button>
+                    </div> 
+                    <form th:action="@{/usuario/guardar}" th:object="${usuario}"
+                          method="POST" class="was-validated"
+                          enctype="multipart/form-data">
+                        <div class="modal-body">
+                            <div class="mb-3">
+                                <label for="name">[[#{usuario.name}]]</label>
+                                <input type="text" class="form-control" name="name" required="true"/>
+                            </div>
+                            <div class="mb-3">
+                                <label for="lastName">[[#{usuario.lastName}]]</label>
+                                <input type="text" class="form-control" name="lastName" required="true"/>
+                            </div>
+                            <div class="mb-3">
+                                <label for="username">[[#{usuario.username}]]</label>
+                                <input type="text" class="form-control" name="username" required="true"/>
+                            </div>
+                            <div class="mb-3">
+                                <label for="password">[[#{usuario.password}]]</label>
+                                <input type="password" class="form-control" name="password" required="true"/>
+                            </div>
+                            <div class="mb-3">
+                                <label for="email">[[#{usuario.email}]]</label>
+                                <input type="email" class="form-control" name="email" required="true"/>
+                            </div>
+                            <div class="mb-3">
+                                <label for="phoneNumber">[[#{usuario.phoneNumber}]]</label>
+                                <input type="tel" class="form-control" name="phoneNumber"/>
+                            </div>
+                            <div class="mb-3">
+                                <label for="image">[[#{usuario.image}]]</label>
+                                <input class="form-control" type="file" name="imagenFile"
+                                       onchange="readURL(this);"/>
+                                <img id="blah" src="#" alt="your image" height="200"/>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-primary" type="submit">Guardar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <body>
         <header th:replace="~{layout/plantilla :: header}"/>
         <div class="container my-5">
@@ -24,9 +85,9 @@
                                     <div class="col-md-7 my-auto"><input class="form-control" type="password" name="password" id="password"/></div></div>
                                 <div class="card-footer col text-center">
                                     <button class="btn btn-primary" >
-                                        <a th:href="@{/registro/nuevo}" class="btn"><i class="fas fa-user-plus"></i> [[#{accion.registrar}]]</a></button>
-                                    <button class="btn btn-info" >                                        
-                                        <a th:href="@{/registro/recordar}" class="btn"><i class="fas fa-envelope"></i> [[#{accion.recordar}]]</a></button>
+                                        <a href="#" class="btn" data-bs-toggle="modal" data-bs-target="#agregarUsuario">
+                                            <i class="fas fa-user-plus"></i> [[#{accion.registrar}]]
+                                        </a>
                                     <button class="btn btn-success" type="submit">
                                         <span class="btn"><i class="fas fa-sign-in-alt"></i>
                                             [[#{login.login}]]</span></button>
