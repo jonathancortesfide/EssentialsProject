@@ -1,145 +1,162 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <title>Essentials</title>
-        <meta charset="UTF-8"/>
-        <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>
-        <link th:href="@{/webjars/font-awesome/css/all.css}" rel="stylesheet"/>
-        <script th:src="@{/js/rutinas.js}"></script>
-        <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
-        <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
-        <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
-    </head>
-    <body>
-        <!-- Header -->
-        <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
-            <a th:href="@{/}" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
-                <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
-                <span class="fs-4">Essentials</span>
-            </a>
-            <ul class="nav nav-pills">
-                <li class="nav-item"><a th:href="@{/product/listado}" class="nav-link">Products</a></li>
-                <li class="nav-item"><a th:href="@{/usuario/listado}" class="nav-link">Users</a></li>
-                <li class="nav-item"><a th:href="@{/carrito/listado}" class="nav-link">Carrito</a></li>
 
-            </ul>
-            <ul class="navbar-nav">
+<head>
+    <title>Essentials</title>
+    <meta charset="UTF-8" />
+    <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet" />
+    <link th:href="@{/webjars/font-awesome/css/all.css}" rel="stylesheet" />
+    <script th:src="@{/js/rutinas.js}"></script>
+    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="d-flex flex-wrap justify-content-between align-items-center py-3 mb-4 border-bottom">
+        <a th:href="@{/}" class="d-flex align-items-center text-dark text-decoration-none">
+            <svg class="bi me-2" width="40" height="32">
+                <use xlink:href="#bootstrap" />
+            </svg>
+            <span class="fs-4">Essentials</span>
+        </a>
+
+        <nav class="d-flex flex-grow-1 justify-content-center">
+            <ul class="nav nav-pills">
+                <li class="nav-item"><a th:href="@{/product/listado}" class="nav-link"><i class="fas fa-box"></i>
+                        Products</a></li>
+                <li class="nav-item"><a th:href="@{/usuario/listado}" class="nav-link"><i class="fas fa-users"></i>
+                        Users</a></li>
+                <li class="nav-item"><a th:href="@{/carrito/listado}" class="nav-link"><i
+                            class="fas fa-shopping-cart"></i> Carrito</a></li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">[[#{plantilla.idioma}]]</a>
+                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+                        aria-expanded="false">
+                        <i class="fas fa-flag"></i> Idioma
+                    </a>
                     <ul class="dropdown-menu dropdown-menu-dark">
-                        <li><a class="dropdown-item"  th:href="@{/(lang=es)}">ES</a></li>
+                        <li><a class="dropdown-item" th:href="@{/(lang=es)}">ES</a></li>
                         <li><a class="dropdown-item" th:href="@{/(lang=en)}">EN</a></li>
                     </ul>
                 </li>
             </ul>
-            <ul class="navbar-nav" sec:authorize="isAuthenticated()">
+        </nav>
+
+        <div class="d-flex align-items-center ms-auto">
+            <ul class="navbar-nav ms-auto" sec:authorize="isAuthenticated()">
                 <li class="nav-item text-white my-auto">
                     <span sec:authentication="name">Santi</span>
                 </li>
-                <li class="nav-item my-auto">
+                <li class="nav-item my-auto d-flex justify-content-center">
                     <form method="post" th:action="@{/logout}">
-                        <button class="btn btn-dark">
-                            <i class="fas fa-sign-out-alt"></i>
+                        <button class="btn btn-outline-dark" aria-label="Logout">
+                            <i class="fas fa-sign-out-alt"></i> Logout
                         </button>
-
                     </form>
                 </li>
             </ul>
-        </header>
+        </div>
+    </header>
 
-        <!-- Modales -->
-        <div th:fragment="modales">
-            <!-- Modal Trigger Button -->
-            <div class="d-flex justify-content-center my-3">
-                <button type="button" class="btn btn-outline-primary btn-lg" data-bs-toggle="modal" data-bs-target="#loginModal">
-                    Iniciar Sesión
-                </button>
-            </div>
 
-            <!-- Modal Structure (Login Modal) -->
-            <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="loginModalLabel">Login</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <form onsubmit="event.preventDefault()">
-                                <p class="text-muted text-center">Please enter your login and password!</p>
-                                <div class="mb-3">
-                                    <input type="text" class="form-control" placeholder="Username" required>
-                                </div>
-                                <div class="mb-3">
-                                    <input type="password" class="form-control" placeholder="Password" required>
-                                </div>
-                                <div class="text-center mb-3">
-                                    <a class="forgot text-muted" href="#">Forgot password?</a>
-                                </div>
-                                <div class="d-grid mb-3">
-                                    <button type="submit" class="btn btn-primary">Login</button>
-                                </div>
-                            </form>
-                        </div>
+    <!-- Modales -->
+    <div th:fragment="modales">
+        <!-- Modal Trigger Button -->
+        <div class="d-flex justify-content-center my-3">
+            <button type="button" class="btn btn-outline-primary btn-lg" data-bs-toggle="modal"
+                data-bs-target="#loginModal">
+                Iniciar Sesión
+            </button>
+        </div>
+
+        <!-- Modal Structure (Login Modal) -->
+        <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="loginModalLabel">Login</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                </div>
-            </div>
-
-            <!-- Crear Usuario -->
-            <div class="d-flex justify-content-center my-3">
-                <button type="button" class="btn btn-outline-primary btn-lg" data-bs-toggle="modal" data-bs-target="#singUpModal">
-
-                    Crear usuario
-                </button>
-            </div>
-
-            <!-- Modal Structure (Sign Up Modal) -->
-            <div class="modal fade" id="singUpModal" tabindex="-1" aria-labelledby="singUpModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="singUpModalLabel">Crear Usuario</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <form onsubmit="event.preventDefault()">
-                                <p class="text-muted text-center">Please fulfill the empty spaces to create your user!</p>
-                                <div class="mb-3">
-                                    <input type="text" class="form-control" placeholder="Email" required>
-                                </div>
-                                <div class="mb-3">
-                                    <input type="text" class="form-control" placeholder="Username" required>
-                                </div>
-                                <div class="mb-3">
-                                    <input type="password" class="form-control" placeholder="Password" required>
-                                </div>
-                                <div class="mb-3">
-                                    <input type="password" class="form-control" placeholder="Password confirmation" required>
-                                </div>
-                                <div class="text-center mb-3">
-                                    <a class="forgot text-muted" href="#">Why be part of us?</a>
-                                </div>
-                                <div class="d-grid mb-3">
-                                    <button type="submit" class="btn btn-primary">Create user</button>
-                                </div>
-                            </form>
-                        </div>
+                    <div class="modal-body">
+                        <form onsubmit="event.preventDefault()">
+                            <p class="text-muted text-center">Please enter your login and password!</p>
+                            <div class="mb-3">
+                                <input type="text" class="form-control" placeholder="Username" required>
+                            </div>
+                            <div class="mb-3">
+                                <input type="password" class="form-control" placeholder="Password" required>
+                            </div>
+                            <div class="text-center mb-3">
+                                <a class="forgot text-muted" href="#">Forgot password?</a>
+                            </div>
+                            <div class="d-grid mb-3">
+                                <button type="submit" class="btn btn-primary">Login</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Footer -->
-        <footer class="py-3 my-4">
-            <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-                <li class="nav-item"><a th:href="@{/}" class="nav-link px-2 text-body-secondary">Home</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Features</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Pricing</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">FAQs</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">About</a></li>
-            </ul>
-            <p class="text-center text-body-secondary">&copy; 2024 Company, Inc</p>
-        </footer>
+        <!-- Crear Usuario -->
+        <div class="d-flex justify-content-center my-3">
+            <button type="button" class="btn btn-outline-primary btn-lg" data-bs-toggle="modal"
+                data-bs-target="#singUpModal">
 
-    </body>
+                Crear usuario
+            </button>
+        </div>
+
+        <!-- Modal Structure (Sign Up Modal) -->
+        <div class="modal fade" id="singUpModal" tabindex="-1" aria-labelledby="singUpModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="singUpModalLabel">Crear Usuario</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form onsubmit="event.preventDefault()">
+                            <p class="text-muted text-center">Please fulfill the empty spaces to create your user!</p>
+                            <div class="mb-3">
+                                <input type="text" class="form-control" placeholder="Email" required>
+                            </div>
+                            <div class="mb-3">
+                                <input type="text" class="form-control" placeholder="Username" required>
+                            </div>
+                            <div class="mb-3">
+                                <input type="password" class="form-control" placeholder="Password" required>
+                            </div>
+                            <div class="mb-3">
+                                <input type="password" class="form-control" placeholder="Password confirmation"
+                                    required>
+                            </div>
+                            <div class="text-center mb-3">
+                                <a class="forgot text-muted" href="#">Why be part of us?</a>
+                            </div>
+                            <div class="d-grid mb-3">
+                                <button type="submit" class="btn btn-primary">Create user</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="py-3 my-4">
+        <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+            <li class="nav-item"><a th:href="@{/}" class="nav-link px-2 text-body-secondary">Home</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Features</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Pricing</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">FAQs</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">About</a></li>
+        </ul>
+        <p class="text-center text-body-secondary">&copy; 2024 Company, Inc</p>
+    </footer>
+
+</body>
+
 </html>
