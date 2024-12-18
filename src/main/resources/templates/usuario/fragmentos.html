@@ -156,10 +156,20 @@
                                             </div>
                                             <div class="card-body">
                                                 <div class="mb-3">
+                                                    <label for="username">[[#{usuario.username}]]</label>
+                                                    <input type="text" class="form-control" name="username"
+                                                           th:field="*{username}" required="true"/>
+                                                </div>
+                                                <div class="mb-3">
                                                     <label for="name">[[#{usuario.name}]]</label>
                                                     <input type="text" class="form-control" 
                                                            name="name" th:field="*{name}"
                                                            required="true">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="password">[[#{usuario.password}]]</label>
+                                                    <input type="password" class="form-control" name="password" 
+                                                           th:field="*{password}"/>
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="lastName">[[#{usuario.lastName}]]</label>
@@ -178,11 +188,11 @@
                                                     <input type="tel" class="form-control" 
                                                            name="phoneNumber" th:field="*{phoneNumber}">
                                                 </div>
-                                                <div class="mb-3">
-                                                    <label for="image">[[#{usuario.image}]]</label>
-                                                    <input class="form-control" type="file" name="image"
-                                                           onchange="readURL(this);" />
-                                                    <img id="blah" th:src="@{${usuario.image}}" alt="your image" height="200"/>
+                                                <div>
+                                                     <label for="image">[[#{usuario.image}]]</label>
+                                                     <input class="form-control" type="file" name="imagenFile"
+                                                     onchange="readURL(this);"/>
+                                                     <img id="blah" src="#" alt="your image" height="200"/>
                                                 </div>
                                             </div>
                                         </div>
