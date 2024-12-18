@@ -1,6 +1,4 @@
--- Author: Elias Viquez
-
--- DROP DATABASE Essentials;
+DROP DATABASE Essentials;
 drop schema if exists Essentials;
 drop user if exists usuario_prueba;
 
@@ -85,6 +83,22 @@ CREATE TABLE Invoice (
     FOREIGN KEY (CustomerId) REFERENCES Customers(Id) ON DELETE SET NULL
 );
 
+-- Relational Table
+CREATE TABLE Sale (
+    Id INT AUTO_INCREMENT PRIMARY KEY,
+	CustomerId INT,
+    Date DATE NOT NULL,
+    Products NVARCHAR(200),
+    FOREIGN KEY (CustomerId) REFERENCES Customers(Id) ON DELETE SET NULL
+);
+
+-- No relational table
+CREATE TABLE Discount (
+    Id INT AUTO_INCREMENT PRIMARY KEY,
+	Product NVARCHAR(200),
+    Date DATE NOT NULL,
+    Comment NVARCHAR(400)
+);
 
 -- INSERT Categories DATA
 INSERT INTO Categories (Category, Description) VALUES ('Sudaderas', 'Ropa de manga larga, cómoda y moderna');
@@ -143,7 +157,18 @@ SELECT * FROM Role;
 
 SELECT * FROM Product;
 
--- Sin mas inserts curiosos para evitar perder el curso.
+SELECT * FROM User;
+
+SELECT * FROM Sale;
+
+SELECT * FROM DevelopmentComments
+
+
+
+
+
+
+
  
  
 
